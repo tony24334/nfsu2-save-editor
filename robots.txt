@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /
+Allow: /nfsu2-save-editor/
 
-Sitemap: https://nfsu2.divon.eu/sitemap.xml
+Sitemap: https://tony24334.github.io/nfsu2-save-editor/sitemap.xml

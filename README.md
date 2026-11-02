@@ -3,7 +3,8 @@
 Free, client-side browser utility to edit **Need for Speed Underground 2** career save files. 100% client-side privacy, zero server uploads.
 
 ## Live Web App
-- **Original editor:** [Open NFSU2 Save Editor](https://nfsu2.divon.eu/)
+- **Launch this fork:** [NFSU2 Unique Performance Save Editor](https://tony24334.github.io/nfsu2-save-editor/)
+- **Original editor:** [Starladdey’s NFSU2 Save Editor](https://nfsu2.divon.eu/)
 
 ![NFS Underground 2 Save Editor preview](assets/web.png)
 
@@ -63,7 +64,7 @@ Standard path for Windows Explorer (`Win + R`):
 
 You don't need an internet connection to edit your save files:
 
-1. **Original web app:** Visit **[nfsu2.divon.eu](https://nfsu2.divon.eu)** and click **"Install App"** (PWA) in your browser's address bar to use the original editor offline. The original website does **not** necessarily include this fork's modifications.
+1. **This fork (recommended):** Visit **[NFSU2 Unique Performance Save Editor](https://tony24334.github.io/nfsu2-save-editor/)** and install it as a PWA if supported by your browser. The [original website](https://nfsu2.divon.eu/) may not include the fork’s modifications.
 2. **Standalone archive:**
    - Download this fork or clone the repository.
    - Open `index.html` in a modern browser to edit local save files.

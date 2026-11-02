@@ -1,9 +1,9 @@
 {
-  "name": "NFSU2 Save Editor — Career Garage & Car Injector",
+  "name": "NFSU2 Save Editor \u2014 Career Garage & Car Injector",
   "short_name": "NFSU2 Editor",
-  "description": "Client-side Need for Speed Underground 2 Save Editor, Money Trainer & Multi-Slot Car Injector.",
-  "start_url": "/",
-  "scope": "/",
+  "description": "Client-side NFSU2 save editor with per-car Unique Performance upgrades and save checksum handling.",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0d1117",
   "theme_color": "#151a23",
