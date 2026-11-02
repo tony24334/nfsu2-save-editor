@@ -1,6 +1,61 @@
 (() => {
 'use strict';
 const BASE=0x5870, STRIDE=0x7f2, CARCOUNT=5;
+
+// Same NFSU2 three-block CRC routine used by the standalone editor.
+// It runs immediately before the original Save Editor downloads workingBytes.
+const CRC_TABLE = new Uint32Array(256);
+for (let n = 0; n < 256; n++) {
+  let c = (n << 24) >>> 0;
+  for (let bit = 0; bit < 8; bit++) c = (c & 0x80000000) ? (((c << 1) ^ 0x04c11db7) >>> 0) : ((c << 1) >>> 0);
+  CRC_TABLE[n] = c;
+}
+function nfsu2CRC(bytes, start, end) {
+  if (end - start < 4) return 0;
+  let r = (~(((bytes[start] << 24) | (bytes[start + 1] << 16) |
+      (bytes[start + 2] << 8) | bytes[start + 3]) >>> 0)) >>> 0;
+  for (let i = start + 4; i < end; i++)
+    r = (((r << 8) | bytes[i]) ^ CRC_TABLE[r >>> 24]) >>> 0;
+  return (~r) >>> 0;
+}
+window.nfsu2FinalizeSave = function (editor) {
+  const bytes = editor && editor.workingBytes;
+  if (!(bytes instanceof Uint8Array) || bytes.length !== 54966 ||
+      String.fromCharCode(...bytes.subarray(0, 4)) !== '20CM') {
+    throw new Error('Invalid NFSU2 save: expected 54,966-byte 20CM file');
+  }
+  const dv = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  const blockA = 28;
+  const blockB = blockA + dv.getUint32(8, true);
+  const end = blockB + dv.getUint32(12, true);
+  if (blockB < blockA || end !== bytes.length) {
+    throw new Error('Invalid NFSU2 save: block sizes do not match file length');
+  }
+  dv.setUint32(16, nfsu2CRC(bytes, blockA, blockB), true);
+  dv.setUint32(20, nfsu2CRC(bytes, blockB, end), true);
+  dv.setUint32(24, nfsu2CRC(bytes, 0, 24), true);
+};
+
+// Keep the upstream download handler intact. Capture its click first,
+// update the current working save CRCs, then let the original handler run.
+// The original .bak is downloaded from the untouched original buffer.
+const downloadButton = document.getElementById('btnDownloadSave');
+if (downloadButton) {
+  downloadButton.addEventListener('click', (event) => {
+    const editor = window.__nfsu2Editor;
+    if (!editor || !(editor.workingBytes instanceof Uint8Array)) return;
+    try {
+      window.nfsu2FinalizeSave(editor);
+    } catch (error) {
+      // Prevent exporting a corrupt or unsupported save.
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      console.error('NFSU2 save checksum update failed:', error);
+      window.alert('Unable to export save: ' + error.message);
+    }
+  }, {capture: true});
+}
+
 const parts=[
  ['Weight Reduction',0x2e8],['Transmission',0x2ec],
  ['NOS',0x2f0],['Engine',0x2f4],
