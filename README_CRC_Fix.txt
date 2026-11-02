@@ -1,1 +1,0 @@
-CRC Fix: js/unique-integrated.js validates and recalculates Block A, Block B and header CRC before the original Download Save handler runs. The upstream bundle is only changed to expose the editor instance.
