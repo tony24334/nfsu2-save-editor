@@ -62,6 +62,112 @@ const parts=[
  ['Turbo',0x2f8],['Suspension',0x2fc],
  ['Brakes',0x300],['ECU',0x304],['Tires',0x308]
 ];
+
+// Wide Body Installation (no career unlock or owned-part flags are touched).
+// RideInfo's BASE part hash uniquely identifies the stock car model.
+// The model-specific slot at +0x30 contains a little-endian 32-bit part hash.
+// KITW00 is the original/default body; KITW01..KITW04 are four wide-body variants.
+const WIDEBODY_OFFSET = 0x30;
+const WIDEBODY_KITS = 4;
+const SUV_MODELS = new Set(['ESCALADE', 'HUMMER', 'NAVIGATOR']);
+const STOCK_MODELS = [
+ '240SX','3000GT','350Z','A3','CELICA','CIVIC','COROLLA','CORSA',
+ 'ECLIPSE','ESCALADE','FOCUS','G35','GOLF','GTO','HUMMER','IMPREZAWRX',
+ 'IS300','LANCEREVO8','MIATA','MUSTANGGT','NAVIGATOR','PEUGEOT106',
+ 'PEUGEOT206','RSX','RX7','RX8','SENTRA','SKYLINE','SUPRA','TIBURON','TT',
+ '106','206' // alternate regional asset labels in some builds
+];
+function partHash(name) {
+ let hash = 0xffffffff;
+ for (const char of name.toUpperCase())
+   hash = (Math.imul(hash, 33) + char.charCodeAt(0)) >>> 0;
+ return hash;
+}
+const MODEL_BY_BASE = new Map(STOCK_MODELS.map(name => [partHash(name + '_BASE'), name]));
+function getWideBodyModel(slot) {
+ if (!valid(slot)) return null;
+ return MODEL_BY_BASE.get(value(slot, 0x18)) || null;
+}
+function wideBodyHash(model, index) {
+ return partHash(model + '_KITW' + String(index).padStart(2, '0') + '_BODY');
+}
+function kitFromHash(model, hash) {
+ for (let i = 0; i <= WIDEBODY_KITS; i++)
+   if (wideBodyHash(model, i) === hash) return i;
+ return null;
+}
+function hex32(x) { return '0x' + x.toString(16).toUpperCase().padStart(8, '0'); }
+const widebodyExpanded = new Set();
+function renderWideBodyPanel(card, slot) {
+ let panel = card.querySelector('.widebody-in-card');
+ if (!panel) {
+   panel = document.createElement('section');
+   panel.className = 'widebody-in-card';
+   panel.dataset.slot = String(slot);
+   panel.innerHTML = `<div class="widebody-in-card-heading"><strong>Installed Wide Body Kit</strong></div>
+    <div class="widebody-in-card-status"></div>
+    <div class="widebody-in-card-controls">
+      <label>Kit <select aria-label="Wide body kit"></select></label>
+      <button type="button" data-widebody-apply>Install Selected Kit</button>
+    </div>
+    <p class="widebody-in-card-note">Changes the installed body part only. Does not unlock the in-game garage menu or alter career rewards.</p>`;
+   panel.addEventListener('click', event => event.stopPropagation());
+   panel.addEventListener('change', event => {
+     if (!event.target.matches('select')) return;
+     const model = getWideBodyModel(slot);
+     const current = model && kitFromHash(model, value(slot, WIDEBODY_OFFSET));
+     panel.querySelector('[data-widebody-apply]').disabled =
+       !model || SUV_MODELS.has(model) || event.target.value === '' ||
+       Number(event.target.value) === current;
+   });
+   panel.addEventListener('click', event => {
+     if (!event.target.closest('[data-widebody-apply]')) return;
+     const select = panel.querySelector('select');
+     const model = getWideBodyModel(slot);
+     if (!model || SUV_MODELS.has(model) || !valid(slot)) return;
+     if (!/^[0-4]$/.test(select.value)) return;
+     const selected = Number(select.value);
+     const bytes = data();
+     if (!bytes) return;
+     const offset = BASE + slot * STRIDE + WIDEBODY_OFFSET;
+     new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength)
+       .setUint32(offset, wideBodyHash(model, selected), true);
+     renderWideBodyPanel(card, slot);
+   });
+   card.appendChild(panel);
+ }
+ const status = panel.querySelector('.widebody-in-card-status');
+ const select = panel.querySelector('select');
+ const apply = panel.querySelector('[data-widebody-apply]');
+ select.replaceChildren();
+ const model = getWideBodyModel(slot);
+ const activeHash = valid(slot) ? value(slot, WIDEBODY_OFFSET) : 0;
+ const activeKit = model ? kitFromHash(model, activeHash) : null;
+ if (!model || SUV_MODELS.has(model)) {
+   const detail = !valid(slot) ? 'No car in this slot.' :
+     (model && SUV_MODELS.has(model) ? 'Wide bodies are not available for SUVs.' :
+       'Unsupported or custom car model; no changes will be written.');
+   status.textContent = detail;
+   select.disabled = true;
+   apply.disabled = true;
+   return;
+ }
+ status.textContent = model + '  ·  Installed: ' +
+    (activeKit === null ? 'Unknown / custom part' : 'KITW' + String(activeKit).padStart(2, '0')) +
+    ' (' + hex32(activeHash) + ')';
+ if (activeKit === null) {
+   const unknown = new Option('Choose a replacement kit...', '');
+   select.add(unknown);
+ }
+ for (let i = 0; i <= WIDEBODY_KITS; i++) {
+   const name = 'KITW' + String(i).padStart(2, '0');
+   select.add(new Option(name + (i === 0 ? ' — Original body' : ' — Wide body'), String(i)));
+ }
+ select.disabled = false;
+ select.value = activeKit === null ? '' : String(activeKit);
+ apply.disabled = true; // changes are explicit; selecting a kit enables Apply
+}
+
 const list=document.getElementById('garageSlotsContainer');
 if(!list) return;
 const expanded=new Set();let editing=false;
@@ -84,9 +190,18 @@ function refresh(slot){const card=list.querySelectorAll('.slot-card')[slot];if(c
 function sync(){if(editing)return;editing=true;try{const cards=[...list.querySelectorAll('.slot-card')];for(let i=0;i<Math.min(CARCOUNT,cards.length);i++){
  const card=cards[i];let btn=card.querySelector('.unique-in-card-toggle');if(!btn){btn=document.createElement('button');btn.type='button';btn.className='unique-in-card-toggle';btn.addEventListener('click',e=>{e.stopPropagation();expanded.has(i)?expanded.delete(i):expanded.add(i);sync();});const row=card.querySelector('.slot-top-row');if(row)row.insertAdjacentElement('afterend',btn);else card.prepend(btn);}
  btn.textContent=expanded.has(i)?'▾ Unique Performance (Collapse)':'▸ Unique Performance (Expand)';btn.disabled=!valid(i);btn.setAttribute('aria-expanded',String(expanded.has(i)));if(expanded.has(i))renderPanel(card,i);else card.querySelector('.unique-in-card')?.remove();
+ let wideToggle=card.querySelector('.widebody-in-card-toggle');
+ if(!wideToggle){
+   wideToggle=document.createElement('button');wideToggle.type='button';wideToggle.className='widebody-in-card-toggle';
+   wideToggle.addEventListener('click',e=>{e.stopPropagation();widebodyExpanded.has(i)?widebodyExpanded.delete(i):widebodyExpanded.add(i);sync();});
+   btn.insertAdjacentElement('afterend',wideToggle);
+ }
+ wideToggle.textContent=widebodyExpanded.has(i)?'▾ Wide Body Kit (Collapse)':'▸ Wide Body Kit (Expand)';
+ wideToggle.disabled=!valid(i);wideToggle.setAttribute('aria-expanded',String(widebodyExpanded.has(i)));
+ if(widebodyExpanded.has(i))renderWideBodyPanel(card,i);else card.querySelector('.widebody-in-card')?.remove();
  }}finally{editing=false;}}
 const observer=new MutationObserver(()=>{if(!editing)sync();});observer.observe(list,{childList:true,subtree:false});
 // Re-render if another garage action changes a selected car or restores a save.
-document.addEventListener('click',e=>{if(!e.target.closest('.unique-in-card,.unique-in-card-toggle'))queueMicrotask(sync);},true);
+document.addEventListener('click',e=>{if(!e.target.closest('.unique-in-card,.unique-in-card-toggle,.widebody-in-card,.widebody-in-card-toggle'))queueMicrotask(sync);},true);
 sync();
 })();

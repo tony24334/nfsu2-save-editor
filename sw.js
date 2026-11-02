@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nfsu2-save-editor-fork-v3';
+const CACHE_NAME = 'nfsu2-save-editor-fork-v4-widebody';
 const ASSETS = [
   './', './index.html', './css/style.css',
   './js/app.bundle.min.js', './js/unique-integrated.js',

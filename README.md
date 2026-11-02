@@ -53,6 +53,17 @@ The nine controls write little-endian 32-bit values (`0` or `1`) at the followin
 
 Weight Reduction and Engine were tested individually using in-game performance comparisons. A save with all nine values enabled also loaded and showed additional performance gains, **but that does not independently establish every remaining category mapping or prove that all nine upgrades are active**. The editor is intended for compatible NFSU2 career saves; always test changes on a backup. The original editor's general *Special Parts* unlock operation is distinct from these per-vehicle installed-upgrade controls.
 
+## Fork Enhancements — Per-Car Wide Body Installation
+
+Open **Wide Body Kit** on an occupied garage card to install one of the body styles for that car directly in the loaded career save:
+
+- **KITW00** — the original/default body part; **KITW01–KITW04** — the four wide-body variants. The game names Vapor, Mantis, Armageddon and Apocalypse have **not** been independently mapped to specific KITW numbers.
+- The editor detects the vehicle model from its `MODEL_BASE` hash at slot offset `+0x18` and writes the calculated `MODEL_KITWxx_BODY` part hash to slot offset **`+0x30`** (little-endian 32-bit).
+- The installer applies separately to each occupied career garage slot; SUVs and unrecognized/custom vehicle models are not modified.
+- **This installs a body part only.** It does not unlock the in-game Wide Body menu, change story or Outrun rewards, or write any ownership flags. An in-game padlock may therefore remain visible after installing a kit.
+- **Evidence:** Skyline `KITW01` was tested in-game successfully. KITW02–KITW04 and other vehicle models use the same inferred hash naming scheme and still need in-game validation.
+- Saves are checked for the expected `20CM` layout and all three save CRCs are recalculated when downloading. Always make a backup.
+
 ## Backup Warning
 Always back up your save files before making changes. This lets you restore your original progress if something goes wrong.
 

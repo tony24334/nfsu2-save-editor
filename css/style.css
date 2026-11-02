@@ -1164,3 +1164,17 @@ select:focus {
 .unique-in-card-option small{font-size:10px;color:#8ee8c1;margin-left:auto}
 .unique-in-card-actions{display:flex;gap:8px;margin-top:10px}
 .unique-in-card-actions button{border:1px solid #607089;background:#303e52;color:white;padding:6px 10px;border-radius:5px;cursor:pointer}
+
+/* Per-car wide body installer. Does not change career unlocks. */
+.widebody-in-card-toggle{align-self:flex-start;background:#222f42;color:#dbeafe;border:1px solid #405472;border-radius:6px;padding:6px 11px;font-size:12px;cursor:pointer}
+.widebody-in-card-toggle:hover{background:#35455b}
+.widebody-in-card-toggle:disabled{opacity:.5;cursor:not-allowed}
+.widebody-in-card{padding:12px;background:#131d2b;border:1px solid #45556b;border-radius:8px;color:#f0f6ff}
+.widebody-in-card-heading{margin-bottom:8px}
+.widebody-in-card-status{font-size:12px;line-height:1.5;color:#c8d6e8;margin-bottom:10px;overflow-wrap:anywhere}
+.widebody-in-card-controls{display:flex;align-items:end;gap:10px;flex-wrap:wrap}
+.widebody-in-card-controls label{display:flex;flex-direction:column;gap:5px;font-size:12px}
+.widebody-in-card-controls select{background:#293447;color:#fff;border:1px solid #607089;border-radius:5px;padding:7px 10px;min-width:190px;max-width:100%}
+.widebody-in-card-controls button{border:1px solid #607089;background:#303e52;color:white;padding:7px 11px;border-radius:5px;cursor:pointer}
+.widebody-in-card-controls button:disabled{opacity:.5;cursor:not-allowed}
+.widebody-in-card-note{font-size:11px;color:#aab9cc;line-height:1.5;margin:10px 0 0}
