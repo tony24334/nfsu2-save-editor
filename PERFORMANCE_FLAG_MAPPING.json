@@ -1,0 +1,546 @@
+[
+  {
+    "index": 0,
+    "category": "WT",
+    "categoryLabel": "Weight reduction",
+    "key": "REMOVE_REAR_SEATS",
+    "label": "Remove Rear Seats",
+    "verified": false
+  },
+  {
+    "index": 1,
+    "category": "WT",
+    "categoryLabel": "Weight reduction",
+    "key": "REMOVE_INTERIOR_PANELS",
+    "label": "Remove Interior Panels",
+    "verified": false
+  },
+  {
+    "index": 2,
+    "category": "WT",
+    "categoryLabel": "Weight reduction",
+    "key": "LIGHTWEIGHT_WINDOWS",
+    "label": "Lightweight Windows",
+    "verified": false
+  },
+  {
+    "index": 3,
+    "category": "WT",
+    "categoryLabel": "Weight reduction",
+    "key": "LIGHTWEIGHT_SEATS",
+    "label": "Lightweight Seats",
+    "verified": false
+  },
+  {
+    "index": 4,
+    "category": "WT",
+    "categoryLabel": "Weight reduction",
+    "key": "LIGHTWEIGHT_DOORS",
+    "label": "Lightweight Doors",
+    "verified": false
+  },
+  {
+    "index": 5,
+    "category": "WT",
+    "categoryLabel": "Weight reduction",
+    "key": "FOAM_FILLED_INTERIOR",
+    "label": "Foam Filled Interior",
+    "verified": false
+  },
+  {
+    "index": 6,
+    "category": "TR",
+    "categoryLabel": "Transmission",
+    "key": "SHORT_THROW_SHIFT_KIT",
+    "label": "Short Throw Shift Kit",
+    "verified": false
+  },
+  {
+    "index": 7,
+    "category": "TR",
+    "categoryLabel": "Transmission",
+    "key": "LIGHT_FLYWHEEL",
+    "label": "Light Flywheel",
+    "verified": false
+  },
+  {
+    "index": 8,
+    "category": "TR",
+    "categoryLabel": "Transmission",
+    "key": "DIFFERENTIAL",
+    "label": "Differential",
+    "verified": false
+  },
+  {
+    "index": 9,
+    "category": "TR",
+    "categoryLabel": "Transmission",
+    "key": "LIMITED_SLIP_DIFFERENTIAL",
+    "label": "Limited Slip Differential",
+    "verified": false
+  },
+  {
+    "index": 10,
+    "category": "TR",
+    "categoryLabel": "Transmission",
+    "key": "HIGH_PERFORMANCE_CLUTCH",
+    "label": "High Performance Clutch",
+    "verified": false
+  },
+  {
+    "index": 11,
+    "category": "TR",
+    "categoryLabel": "Transmission",
+    "key": "6_SPEED_TRANSMISSION",
+    "label": "6 Speed Transmission",
+    "verified": false
+  },
+  {
+    "index": 12,
+    "category": "NO",
+    "categoryLabel": "Nitrous",
+    "key": "DRY_SHOT",
+    "label": "Dry Shot",
+    "verified": false
+  },
+  {
+    "index": 13,
+    "category": "NO",
+    "categoryLabel": "Nitrous",
+    "key": "WET_SHOT",
+    "label": "Wet Shot",
+    "verified": false
+  },
+  {
+    "index": 14,
+    "category": "NO",
+    "categoryLabel": "Nitrous",
+    "key": "DIRECT_PORT",
+    "label": "Direct Port",
+    "verified": false
+  },
+  {
+    "index": 15,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "MUFFLER",
+    "label": "Muffler",
+    "verified": true
+  },
+  {
+    "index": 16,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "COLD_AIR_INTAKE_SYSTEM",
+    "label": "Cold Air Intake System",
+    "verified": true
+  },
+  {
+    "index": 17,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "REPLACE_HEADERS",
+    "label": "Replace Headers",
+    "verified": false
+  },
+  {
+    "index": 18,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "MILD_CAMSHAFT_AND_CAM_GEARS",
+    "label": "Mild Camshaft And Cam Gears",
+    "verified": false
+  },
+  {
+    "index": 19,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "CAT_BACK_EXHAUST_SYSTEM",
+    "label": "Cat Back Exhaust System",
+    "verified": false
+  },
+  {
+    "index": 20,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "HIGH_FLOW_INTAKE_MANIFOLD",
+    "label": "High Flow Intake Manifold",
+    "verified": false
+  },
+  {
+    "index": 21,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "LARGER_DIAMETER_DOWNPIPE",
+    "label": "Larger Diameter Downpipe",
+    "verified": false
+  },
+  {
+    "index": 22,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "RACING_CAMSHAFT_AND_GEARS",
+    "label": "Racing Camshaft And Gears",
+    "verified": false
+  },
+  {
+    "index": 23,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "PORT_AND_POLISH_HEADS",
+    "label": "Port And Polish Heads",
+    "verified": false
+  },
+  {
+    "index": 24,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "BLUEPRINT_THE_BLOCK",
+    "label": "Blueprint The Block",
+    "verified": false
+  },
+  {
+    "index": 25,
+    "category": "EN",
+    "categoryLabel": "Engine",
+    "key": "HIGH_FLOW_HEADERS",
+    "label": "High Flow Headers",
+    "verified": false
+  },
+  {
+    "index": 26,
+    "category": "TU",
+    "categoryLabel": "Turbo",
+    "key": "STAGE_1_TURBO_KIT",
+    "label": "Stage 1 Turbo Kit",
+    "verified": false
+  },
+  {
+    "index": 27,
+    "category": "TU",
+    "categoryLabel": "Turbo",
+    "key": "STAGE_2_TURBO_KIT",
+    "label": "Stage 2 Turbo Kit",
+    "verified": false
+  },
+  {
+    "index": 28,
+    "category": "TU",
+    "categoryLabel": "Turbo",
+    "key": "STAGE_3_TURBO_KIT",
+    "label": "Stage 3 Turbo Kit",
+    "verified": false
+  },
+  {
+    "index": 29,
+    "category": "SU",
+    "categoryLabel": "Suspension",
+    "key": "SPORT_SPRINGS_AND_SHOCKS",
+    "label": "Sport Springs And Shocks",
+    "verified": false
+  },
+  {
+    "index": 30,
+    "category": "SU",
+    "categoryLabel": "Suspension",
+    "key": "STRUT_TOWER_BAR",
+    "label": "Strut Tower Bar",
+    "verified": false
+  },
+  {
+    "index": 31,
+    "category": "SU",
+    "categoryLabel": "Suspension",
+    "key": "PERFORMANCE_SPRINGS_AND_SHOCKS",
+    "label": "Performance Springs And Shocks",
+    "verified": false
+  },
+  {
+    "index": 32,
+    "category": "SU",
+    "categoryLabel": "Suspension",
+    "key": "FRONT_AND_REAR_SWAY_BARS",
+    "label": "Front And Rear Sway Bars",
+    "verified": false
+  },
+  {
+    "index": 33,
+    "category": "SU",
+    "categoryLabel": "Suspension",
+    "key": "FRONT_AND_REAR_TIE_BARS",
+    "label": "Front And Rear Tie Bars",
+    "verified": false
+  },
+  {
+    "index": 34,
+    "category": "SU",
+    "categoryLabel": "Suspension",
+    "key": "UPGRADE_BUSHINGS",
+    "label": "Upgrade Bushings",
+    "verified": false
+  },
+  {
+    "index": 35,
+    "category": "SU",
+    "categoryLabel": "Suspension",
+    "key": "COIL_OVER_SUSPENSION_SYSTEM",
+    "label": "Coil Over Suspension System",
+    "verified": false
+  },
+  {
+    "index": 36,
+    "category": "SU",
+    "categoryLabel": "Suspension",
+    "key": "CAMBER_KIT",
+    "label": "Camber Kit",
+    "verified": false
+  },
+  {
+    "index": 37,
+    "category": "SU",
+    "categoryLabel": "Suspension",
+    "key": "LARGE_DIAMETER_SWAY_BARS",
+    "label": "Large Diameter Sway Bars",
+    "verified": false
+  },
+  {
+    "index": 38,
+    "category": "BR",
+    "categoryLabel": "Brakes",
+    "key": "STREET_COMPOUND_BRAKE_PADS",
+    "label": "Street Compound Brake Pads",
+    "verified": false
+  },
+  {
+    "index": 39,
+    "category": "BR",
+    "categoryLabel": "Brakes",
+    "key": "STEEL_BRAIDED_BRAKE_LINES",
+    "label": "Steel Braided Brake Lines",
+    "verified": false
+  },
+  {
+    "index": 40,
+    "category": "BR",
+    "categoryLabel": "Brakes",
+    "key": "CROSS_DRILLED_ROTORS",
+    "label": "Cross Drilled Rotors",
+    "verified": false
+  },
+  {
+    "index": 41,
+    "category": "BR",
+    "categoryLabel": "Brakes",
+    "key": "LARGE_DIAMETER_ROTORS",
+    "label": "Large Diameter Rotors",
+    "verified": false
+  },
+  {
+    "index": 42,
+    "category": "BR",
+    "categoryLabel": "Brakes",
+    "key": "RACE_COMPOUND_BRAKE_PADS",
+    "label": "Race Compound Brake Pads",
+    "verified": false
+  },
+  {
+    "index": 43,
+    "category": "BR",
+    "categoryLabel": "Brakes",
+    "key": "CROSS_DRILLED_AND_SLOTTED_ROTORS",
+    "label": "Cross Drilled And Slotted Rotors",
+    "verified": false
+  },
+  {
+    "index": 44,
+    "category": "BR",
+    "categoryLabel": "Brakes",
+    "key": "6_PISTON_RACING_CALIPERS",
+    "label": "6 Piston Racing Calipers",
+    "verified": false
+  },
+  {
+    "index": 45,
+    "category": "EC",
+    "categoryLabel": "Engine control & fuel",
+    "key": "REMOVE_SPEED_LIMITER",
+    "label": "Remove Speed Limiter",
+    "verified": false
+  },
+  {
+    "index": 46,
+    "category": "EC",
+    "categoryLabel": "Engine control & fuel",
+    "key": "PERFORMANCE_CHIP",
+    "label": "Performance Chip",
+    "verified": false
+  },
+  {
+    "index": 47,
+    "category": "EC",
+    "categoryLabel": "Engine control & fuel",
+    "key": "HIGH_FLOW_FUEL_PUMP",
+    "label": "High Flow Fuel Pump",
+    "verified": false
+  },
+  {
+    "index": 48,
+    "category": "EC",
+    "categoryLabel": "Engine control & fuel",
+    "key": "FUEL_PRESSURE_REGULATOR",
+    "label": "Fuel Pressure Regulator",
+    "verified": false
+  },
+  {
+    "index": 49,
+    "category": "EC",
+    "categoryLabel": "Engine control & fuel",
+    "key": "FUEL_RAIL",
+    "label": "Fuel Rail",
+    "verified": false
+  },
+  {
+    "index": 50,
+    "category": "EC",
+    "categoryLabel": "Engine control & fuel",
+    "key": "FUEL_FILTER",
+    "label": "Fuel Filter",
+    "verified": false
+  },
+  {
+    "index": 51,
+    "category": "EC",
+    "categoryLabel": "Engine control & fuel",
+    "key": "ENGINE_MANAGEMENT_UNIT",
+    "label": "Engine Management Unit",
+    "verified": false
+  },
+  {
+    "index": 52,
+    "category": "EC",
+    "categoryLabel": "Engine control & fuel",
+    "key": "FUEL_INJECTORS",
+    "label": "Fuel Injectors",
+    "verified": false
+  },
+  {
+    "index": 53,
+    "category": "TI",
+    "categoryLabel": "Tires",
+    "key": "STREET_PERFORMANCE_TIRES",
+    "label": "Street Performance Tires",
+    "verified": false
+  },
+  {
+    "index": 54,
+    "category": "TI",
+    "categoryLabel": "Tires",
+    "key": "PRO_PERFORMANCE_TIRES",
+    "label": "Pro Performance Tires",
+    "verified": false
+  },
+  {
+    "index": 55,
+    "category": "TI",
+    "categoryLabel": "Tires",
+    "key": "EXTREME_PERFORMANCE_TIRES",
+    "label": "Extreme Performance Tires",
+    "verified": false
+  },
+  {
+    "index": 56,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "FRONT_BUMPER_L1",
+    "label": "Front Bumper L1",
+    "verified": false
+  },
+  {
+    "index": 57,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "FRONT_BUMPER_L2",
+    "label": "Front Bumper L2",
+    "verified": false
+  },
+  {
+    "index": 58,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "FRONT_BUMPER_L3",
+    "label": "Front Bumper L3",
+    "verified": false
+  },
+  {
+    "index": 59,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "SIDESKIRTS_L1",
+    "label": "Sideskirts L1",
+    "verified": false
+  },
+  {
+    "index": 60,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "SIDESKIRTS_L2",
+    "label": "Sideskirts L2",
+    "verified": false
+  },
+  {
+    "index": 61,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "SIDESKIRTS_L3",
+    "label": "Sideskirts L3",
+    "verified": false
+  },
+  {
+    "index": 62,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "REAR_BUMPER_L1",
+    "label": "Rear Bumper L1",
+    "verified": false
+  },
+  {
+    "index": 63,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "REAR_BUMPER_L2",
+    "label": "Rear Bumper L2",
+    "verified": false
+  },
+  {
+    "index": 64,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "REAR_BUMPER_L3",
+    "label": "Rear Bumper L3",
+    "verified": false
+  },
+  {
+    "index": 65,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "SPOILER_L1",
+    "label": "Spoiler L1",
+    "verified": false
+  },
+  {
+    "index": 66,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "SPOILER_L2",
+    "label": "Spoiler L2",
+    "verified": false
+  },
+  {
+    "index": 67,
+    "category": "AE",
+    "categoryLabel": "Aero & body",
+    "key": "SPOILER_L3",
+    "label": "Spoiler L3",
+    "verified": false
+  }
+]
